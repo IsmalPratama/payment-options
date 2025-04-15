@@ -2,7 +2,7 @@ package repository
 
 import (
 	"payment-options/internal/models"
-	"time"
+	// "time"
 )
 
 type paymentRepo struct{}
@@ -11,57 +11,57 @@ func NewPaymentRepo() PaymentRepository {
 	return &paymentRepo{}
 }
 
-func (r *paymentRepo) CallOVO() models.PaymentMethod {
-	time.Sleep(2 * time.Second) // Simulate network delay
+func (r *paymentRepo) CallBCAMobile() models.PaymentMethod {
+	// time.Sleep(2 * time.Second) // Simulate network delay
 	return models.PaymentMethod{
 		Account: "6288xx",
 		Status:  "Active",
-		Balance: "10000",
-		Icon:    "https://sampleurl.com/ovo.jpg",
+		Balance: "50000",
+		Icon:    "https://sampleurl.com/bca.jpg",
 	}
 }
 
-func (r *paymentRepo) CallDANA() models.PaymentMethod {
+func (r *paymentRepo) CallLinkAja() models.PaymentMethod {
 	return models.PaymentMethod{
 		Account: "6288xx",
 		Status:  "Active",
-		Balance: "10000",
-		Icon:    "https://sampleurl.com/dana.jpg",
+		Balance: "20000",
+		Icon:    "https://sampleurl.com/linkaja.jpg",
 	}
 }
 
-func (r *paymentRepo) CallGoPay() models.PaymentMethod {
+func (r *paymentRepo) CallBNIMobile() models.PaymentMethod {
 	return models.PaymentMethod{
 		Account: "6288xx",
 		Status:  "Active",
-		Balance: "10000",
-		Icon:    "https://sampleurl.com/gopay.jpg",
+		Balance: "30000",
+		Icon:    "https://sampleurl.com/bni.jpg",
 	}
 }
 
-func (r *paymentRepo) CallShopee() models.PaymentMethod {
+func (r *paymentRepo) CallMandiriOnline() models.PaymentMethod {
 	return models.PaymentMethod{
 		Account: "6288xx",
 		Status:  "Active",
-		Balance: "10000",
-		Icon:    "https://sampleurl.com/shopee.jpg",
+		Balance: "45000",
+		Icon:    "https://sampleurl.com/mandiri.jpg",
 	}
 }
 
-func (r *paymentRepo) CallOneKlik() models.PaymentMethod {
+func (r *paymentRepo) CallKredivo() models.PaymentMethod {
 	return models.PaymentMethod{
 		Account: "6288xx",
 		Status:  "Active",
-		Balance: "10000",
-		Icon:    "https://sampleurl.com/oneklik.jpg",
+		Balance: "8000",
+		Icon:    "https://sampleurl.com/kredivo.jpg",
 	}
 }
 
-func (r *paymentRepo) CallBRIDD() models.PaymentMethod {
+func (r *paymentRepo) CallJenius() models.PaymentMethod {
 	return models.PaymentMethod{
 		Account: "6288xx",
 		Status:  "Active",
-		Balance: "10000",
-		Icon:    "https://sampleurl.com/bridd.jpg",
+		Balance: "12000",
+		Icon:    "https://sampleurl.com/jenius.jpg",
 	}
 }

@@ -15,6 +15,17 @@ func NewPaymentUsecase(r repository.PaymentRepository) PaymentUsecase {
 }
 
 func (u *paymentUsecase) GetPaymentOptions() (map[string]models.PaymentMethod, error) {
+		result := make(map[string]models.PaymentMethod)
+		result["bca_mobile"] = u.repo.CallBCAMobile()
+		result["linkaja"] = u.repo.CallLinkAja()
+		result["bni_mobile"] = u.repo.CallBNIMobile()
+		result["mandiri_online"] = u.repo.CallMandiriOnline()
+		result["kredivo"] = u.repo.CallKredivo()
+		result["jenius"] = u.repo.CallJenius()
+		return result, nil
+}
+
+func (u *paymentUsecase) GetPaymentOptions22() (map[string]models.PaymentMethod, error) {
 	var wg sync.WaitGroup
 	result := make(map[string]models.PaymentMethod)
 	mu := sync.Mutex{}
@@ -24,42 +35,42 @@ func (u *paymentUsecase) GetPaymentOptions() (map[string]models.PaymentMethod, e
 	go func() {
 		defer wg.Done()
 		mu.Lock()
-		result["ovo"] = u.repo.CallOVO()
+		result["bca_mobile"] = u.repo.CallBCAMobile()
 		mu.Unlock()
 	}()
 
 	go func() {
 		defer wg.Done()
 		mu.Lock()
-		result["dana"] = u.repo.CallDANA()
+		result["linkaja"] = u.repo.CallLinkAja()
 		mu.Unlock()
 	}()
 
 	go func() {
 		defer wg.Done()
 		mu.Lock()
-		result["gopay"] = u.repo.CallGoPay()
+		result["bni_mobile"] = u.repo.CallBNIMobile()
 		mu.Unlock()
 	}()
 
 	go func() {
 		defer wg.Done()
 		mu.Lock()
-		result["shopee"] = u.repo.CallShopee()
+		result["mandiri_online"] = u.repo.CallMandiriOnline()
 		mu.Unlock()
 	}()
 
 	go func() {
 		defer wg.Done()
 		mu.Lock()
-		result["oneklik"] = u.repo.CallOneKlik()
+		result["kredivo"] = u.repo.CallKredivo()
 		mu.Unlock()
 	}()
 
 	go func() {
 		defer wg.Done()
 		mu.Lock()
-		result["bridd"] = u.repo.CallBRIDD()
+		result["jenius"] = u.repo.CallJenius()
 		mu.Unlock()
 	}()
 
