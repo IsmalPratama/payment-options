@@ -15,14 +15,15 @@ func NewPaymentUsecase(r repository.PaymentRepository) PaymentUsecase {
 }
 
 func (u *paymentUsecase) GetPaymentOptions() (map[string]models.PaymentMethod, error) {
-		result := make(map[string]models.PaymentMethod)
-		result["bca_mobile"] = u.repo.CallBCAMobile()
-		result["linkaja"] = u.repo.CallLinkAja()
-		result["bni_mobile"] = u.repo.CallBNIMobile()
-		result["mandiri_online"] = u.repo.CallMandiriOnline()
-		result["kredivo"] = u.repo.CallKredivo()
-		result["jenius"] = u.repo.CallJenius()
-		return result, nil
+	result := make(map[string]models.PaymentMethod)
+	result["go_pay"] = u.repo.CallGoPay()         
+	result["ovo"] = u.repo.CallOVO()            
+	result["dana"] = u.repo.CallDANA()           
+	result["linkaja"] = u.repo.CallLinkAja()     
+	result["kredivo"] = u.repo.CallKredivo()     
+	result["shopeepay"] = u.repo.CallShopeePay() 
+	result["bca_virtual_account"] = u.repo.CallVirtualAccountBCA() 
+	return result, nil
 }
 
 func (u *paymentUsecase) GetPaymentOptions22() (map[string]models.PaymentMethod, error) {
@@ -30,47 +31,54 @@ func (u *paymentUsecase) GetPaymentOptions22() (map[string]models.PaymentMethod,
 	result := make(map[string]models.PaymentMethod)
 	mu := sync.Mutex{}
 
-	wg.Add(6)
+	wg.Add(7)
 
 	go func() {
 		defer wg.Done()
 		mu.Lock()
-		result["bca_mobile"] = u.repo.CallBCAMobile()
+		result["go_pay"] = u.repo.CallGoPay()         
 		mu.Unlock()
 	}()
 
 	go func() {
 		defer wg.Done()
 		mu.Lock()
-		result["linkaja"] = u.repo.CallLinkAja()
+		result["ovo"] = u.repo.CallOVO()             
 		mu.Unlock()
 	}()
 
 	go func() {
 		defer wg.Done()
 		mu.Lock()
-		result["bni_mobile"] = u.repo.CallBNIMobile()
+		result["dana"] = u.repo.CallDANA()           
 		mu.Unlock()
 	}()
 
 	go func() {
 		defer wg.Done()
 		mu.Lock()
-		result["mandiri_online"] = u.repo.CallMandiriOnline()
+		result["linkaja"] = u.repo.CallLinkAja()     
 		mu.Unlock()
 	}()
 
 	go func() {
 		defer wg.Done()
 		mu.Lock()
-		result["kredivo"] = u.repo.CallKredivo()
+		result["kredivo"] = u.repo.CallKredivo()     
 		mu.Unlock()
 	}()
 
 	go func() {
 		defer wg.Done()
 		mu.Lock()
-		result["jenius"] = u.repo.CallJenius()
+		result["shopeepay"] = u.repo.CallShopeePay() 
+		mu.Unlock()
+	}()
+
+	go func() {
+		defer wg.Done()
+		mu.Lock()
+		result["bca_virtual_account"] = u.repo.CallVirtualAccountBCA()
 		mu.Unlock()
 	}()
 

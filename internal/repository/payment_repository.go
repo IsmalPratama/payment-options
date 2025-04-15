@@ -3,10 +3,11 @@ package repository
 import "payment-options/internal/models"
 
 type PaymentRepository interface {
-	CallBCAMobile() models.PaymentMethod
+	CallGoPay() models.PaymentMethod
+	CallOVO() models.PaymentMethod
+	CallDANA() models.PaymentMethod
 	CallLinkAja() models.PaymentMethod
-	CallBNIMobile() models.PaymentMethod
-	CallMandiriOnline() models.PaymentMethod
 	CallKredivo() models.PaymentMethod
-	CallJenius() models.PaymentMethod
+	CallShopeePay() models.PaymentMethod
+	CallVirtualAccountBCA() models.PaymentMethod // Add this method here
 }

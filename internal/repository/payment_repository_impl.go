@@ -11,57 +11,65 @@ func NewPaymentRepo() PaymentRepository {
 	return &paymentRepo{}
 }
 
-func (r *paymentRepo) CallBCAMobile() models.PaymentMethod {
-	// time.Sleep(2 * time.Second) // Simulate network delay
+func (r *paymentRepo) CallGoPay() models.PaymentMethod {
 	return models.PaymentMethod{
-		Account: "6288xx",
+		Account: "0812xx",
 		Status:  "Active",
-		Balance: "50000",
-		Icon:    "https://sampleurl.com/bca.jpg",
+		Balance: "500000", 
+		Icon:    "https://sampleurl.com/gopay.jpg",
+	}
+}
+
+func (r *paymentRepo) CallOVO() models.PaymentMethod {
+	return models.PaymentMethod{
+		Account: "0812xx",
+		Status:  "Active", 
+		Balance: "300000",
+		Icon:    "https://sampleurl.com/ovo.jpg",
+	}
+}
+
+func (r *paymentRepo) CallDANA() models.PaymentMethod {
+	return models.PaymentMethod{
+		Account: "0812xx",
+		Status:  "Active",
+		Balance: "200000", 
+		Icon:    "https://sampleurl.com/dana.jpg",
 	}
 }
 
 func (r *paymentRepo) CallLinkAja() models.PaymentMethod {
 	return models.PaymentMethod{
-		Account: "6288xx",
-		Status:  "Active",
-		Balance: "20000",
+		Account: "0812xx", 
+		Status:  "Active", 
+		Balance: "150000", 
 		Icon:    "https://sampleurl.com/linkaja.jpg",
-	}
-}
-
-func (r *paymentRepo) CallBNIMobile() models.PaymentMethod {
-	return models.PaymentMethod{
-		Account: "6288xx",
-		Status:  "Active",
-		Balance: "30000",
-		Icon:    "https://sampleurl.com/bni.jpg",
-	}
-}
-
-func (r *paymentRepo) CallMandiriOnline() models.PaymentMethod {
-	return models.PaymentMethod{
-		Account: "6288xx",
-		Status:  "Active",
-		Balance: "45000",
-		Icon:    "https://sampleurl.com/mandiri.jpg",
 	}
 }
 
 func (r *paymentRepo) CallKredivo() models.PaymentMethod {
 	return models.PaymentMethod{
-		Account: "6288xx",
-		Status:  "Active",
-		Balance: "8000",
+		Account: "0812xx",
+		Status:  "Active", 
+		Balance: "100000",   
 		Icon:    "https://sampleurl.com/kredivo.jpg",
 	}
 }
 
-func (r *paymentRepo) CallJenius() models.PaymentMethod {
+func (r *paymentRepo) CallShopeePay() models.PaymentMethod {
 	return models.PaymentMethod{
-		Account: "6288xx",
-		Status:  "Active",
-		Balance: "12000",
-		Icon:    "https://sampleurl.com/jenius.jpg",
+		Account: "0812xx",  
+		Status:  "Active",  
+		Balance: "250000",  
+		Icon:    "https://sampleurl.com/shopeepay.jpg", 
+	}
+}
+
+func (r *paymentRepo) CallVirtualAccountBCA() models.PaymentMethod {
+	return models.PaymentMethod{
+		Account: "BCA12345", 
+		Status:  "Active", 
+		Balance: "1000000", 
+		Icon:    "https://sampleurl.com/bca_va.jpg",
 	}
 }
